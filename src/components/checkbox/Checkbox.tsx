@@ -2,12 +2,11 @@
  * @name: Checkbox
  * @author: mahuanhuan
  * @date: 2022-10-26 18:29
- * @description：Checkbox
+ * @description：Checkbox  基础组件
  * @update: 2022-10-26 18:29
  */
 import * as React from 'react';
-import classNames from 'classnames';
-import {CheckboxProps, CheckboxChangeEvent} from './type';
+import {CheckboxProps} from './type';
 import {GroupContext} from './Group';
 import styles from './index.less';
 import {useContext, useEffect, useRef, useState} from 'react';
@@ -26,8 +25,9 @@ const CheckboxComponent: React.ForwardRefRenderFunction<HTMLInputElement, Checkb
     },
     ref
 ) => {
+    // 获取 GroupContext 传递过来数据
     const checkboxGroup = useContext(GroupContext);
-
+    // 设置是否被选中
     const [currentChecked, setCurrentChecked] = useState<Boolean>();
 
     // 控制是否禁用
@@ -35,6 +35,7 @@ const CheckboxComponent: React.ForwardRefRenderFunction<HTMLInputElement, Checkb
 
     // 对 value 值的管理
     const prevValue = useRef(value);
+
     useEffect(() => {
         checkboxGroup?.registerValue(value);
     }, [])
@@ -46,7 +47,7 @@ const CheckboxComponent: React.ForwardRefRenderFunction<HTMLInputElement, Checkb
         }
         return () => checkboxGroup?.cancelValue(value);
     }, [value]);
-
+    // 点击事件处理
     const handleChange = (e: any) => {
         if (disabled) {
             return;
@@ -64,22 +65,9 @@ const CheckboxComponent: React.ForwardRefRenderFunction<HTMLInputElement, Checkb
         }
     }, [checkboxGroup?.value])
 
-    // const checkboxClass = classNames({
-    //     // [`${prefixCls}-indeterminate`]: indeterminate,
-    // });
-
-    // label 样式控制
-    // const classString = classNames(
-    //     styles['checkbox-label'],
-    //     {
-    //         ['checkbox-wrapper-checked']: currentChecked,
-    //         ['checkbox-wrapper-disabled']: mergedDisabled,
-    //     },
-    //     className,
-    // );
 
     return (
-        <label style={style}>
+        <label style={style} className={`${styles['checkbox-label']} ${currentChecked&& styles['checkbox-wrapper-checked']} ${mergedDisabled&&styles['checkbox-wrapper-disabled']}`}>
             <input
                 type="checkbox"
                 onChange={handleChange}

@@ -50,15 +50,15 @@ const CheckboxGroupComponent: React.ForwardRefRenderFunction<HTMLDivElement, Che
             return option;
         });
 
-
+    // 取消选中
     const cancelValue = (val: string) => {
         setRegisteredValues(prevValues => prevValues.filter(v => v !== val));
     };
-
+   // 选中
     const registerValue = (val: string) => {
         setRegisteredValues(prevValues => [...prevValues, val]);
     };
-
+    // 点击时处理
     const toggleOption = (option: CheckboxOptionType) => {
         const optionIndex = currentValue.indexOf(option.value);
         const newValue = [...currentValue];
