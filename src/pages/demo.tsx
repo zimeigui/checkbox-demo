@@ -8,12 +8,9 @@
 import Checkbox, {
     CheckboxChangeEvent,
     CheckboxValueType,
-    CheckboxProps,
-    CheckboxOptionType
 } from "@/components/checkbox/";
 
-import {useEffect, useState} from "react";
-
+import {history} from 'umi';
 
 
 const CheckboxDemo = () => {
@@ -68,7 +65,8 @@ const DemoPage = () => {
         console.log(`checked = ${e.target.checked}`);
     };
     return (
-        <div>
+        <div style={{width: '400px', margin: '100px auto'}}>
+            <div style={{cursor: 'pointer', width:'50px'}} onClick={history.back}>《返回</div>
             demo1：
             <CheckboxDemo />
             demo2：
