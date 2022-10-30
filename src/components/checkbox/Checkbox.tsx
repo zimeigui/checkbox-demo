@@ -53,21 +53,29 @@ const CheckboxComponent: React.ForwardRefRenderFunction<HTMLInputElement, Checkb
             return;
         }
         setCurrentChecked(e.target.checked);
-        if(checkboxGroup?.toggleOption) {
+        if (checkboxGroup?.toggleOption) {
             checkboxGroup.toggleOption({label: children, value});
         }
         onChange && onChange(e);
     }
 
-    useEffect(()=>{
-        if(checkboxGroup) {
+    useEffect(() => {
+        if (checkboxGroup) {
             setCurrentChecked(checkboxGroup.value.includes(value));
         }
     }, [checkboxGroup?.value])
 
+    useEffect(() => {
+        setCurrentChecked(checked);
+    }, [checked])
+
 
     return (
-        <label style={style} className={`${styles['checkbox-label']} ${currentChecked&& styles['checkbox-wrapper-checked']} ${mergedDisabled&&styles['checkbox-wrapper-disabled']}`}>
+        <label style={style} className={`
+        ${styles['checkbox-label']}
+        ${indeterminate && styles['checkbox-wrapper-indeterminate']}
+        ${mergedDisabled && styles['checkbox-wrapper-disabled']}
+        `}>
             <input
                 type="checkbox"
                 onChange={handleChange}

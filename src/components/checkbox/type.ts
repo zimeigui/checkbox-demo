@@ -40,6 +40,8 @@ export interface CheckboxOptionType {
     style?: React.CSSProperties;
     disabled?: boolean;
     onChange?: (e: CheckboxChangeEvent) => void;
+    isAll?: boolean;
+    indeterminate?: boolean;
 }
 
 export interface AbstractCheckboxGroupProps {

@@ -4,6 +4,28 @@
   align-items: center;
   margin-bottom: 20px;
 }
+
 .checkbox-wrapper-disabled {
   color: #999;
+}
+
+.checkbox-wrapper-indeterminate {
+  input {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 7px;
+      height: 7px;
+      margin: auto;
+      background-color: #0075ff;
+      border: 0;
+      opacity: 1;
+      content: " ";
+    }
+  }
 }
