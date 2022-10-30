@@ -37,7 +37,6 @@ const CheckboxAll = (props: {
 
 
     const onChange = (checkedList: CheckboxValueType[]) => {
-        console.log(checkedList, 'checkedList');
         if (checkedList.includes('全选') && !isAll) {
             setIsAll(true);
             setCheckedList(getPlainOptionsValue(plainOptionsAll));
