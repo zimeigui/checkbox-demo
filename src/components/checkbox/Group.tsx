@@ -90,6 +90,7 @@ const CheckboxGroupComponent: React.ForwardRefRenderFunction<HTMLDivElement, Che
                 onChange={option.onChange}
                 className={`CheckboxGroup-item`}
                 style={option.style}
+                indeterminate={option.indeterminate}
             >
                 {option.label}
             </Checkbox>
